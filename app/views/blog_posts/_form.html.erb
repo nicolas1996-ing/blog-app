@@ -1,0 +1,31 @@
+<%# form.errors %>
+<% if @blog_post.errors.any? %>
+  <% @blog_post.errors.each do |e| %>
+    <p><%= e.full_message %></p>
+  <% end %>
+<% end %>
+
+<%# blog_posts_controller.create %>
+<%= form_with model: @blog_post do |form| %>
+
+  <%# form.errors %>
+  <div>
+    <% if form.object.errors.any? %>
+      <% form.object.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <%= form.submit %>
+<% end %>

@@ -5,12 +5,36 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="prose mx-10">
+
+      <div class="top-0 h-full w-full bg-white">
+        <div
+          class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"
+        >
+        </div>
+      </div>
+     
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div>
+        <% if user_signed_in?%>
+          <%= link_to "Edit Profile", edit_user_registration_path%>
+          <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <p>
+            <%= link_to "Login", new_user_session_path%>
+          </p>
+          <p>
+            <%= link_to "Register", new_user_registration_path%>
+          </p>
+        <% end %>
+      </div>
+      <%= yield %>
   </body>
 </html>

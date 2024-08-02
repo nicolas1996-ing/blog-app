@@ -1,0 +1,5 @@
+<h4><%= link_to "regresar", blog_post_path(@blog_post) %></h4>
+
+<h2>Editar Publicación</h2>
+
+<%= render partial: "form", locals: { blog_post: @blog_post } %>

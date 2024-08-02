@@ -1,0 +1,9 @@
+<h1> Publicaciones </h1>
+<%= link_to "crear una nueva publicación", new_blog_post_path%>
+<ol>
+  <% @blog_posts.each do |blog| %>
+    <li> 
+      <%= link_to blog.title, blog_post_path(blog.id) %>: <%= blog.body %>
+    </li>
+  <% end %>
+</ol>
