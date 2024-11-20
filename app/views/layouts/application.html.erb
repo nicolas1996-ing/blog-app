@@ -22,16 +22,16 @@
      
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <div>
+      <div class="flex mt-10 items-center gap-10 justify-center">
         <% if user_signed_in?%>
-          <%= link_to "Edit Profile", edit_user_registration_path%>
-          <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "underline text-sm font-bold text-gray-800"%>
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "underline text-sm font-bold text-red-500" %>
         <% else %>
           <p>
-            <%= link_to "Login", new_user_session_path%>
+            <%= link_to "Login", new_user_session_path,  class: "underline text-sm font-bold text-gray-800"%>
           </p>
           <p>
-            <%= link_to "Register", new_user_registration_path%>
+            <%= link_to "Register", new_user_registration_path,  class: "underline text-sm font-bold text-gray-800"%>
           </p>
         <% end %>
       </div>
