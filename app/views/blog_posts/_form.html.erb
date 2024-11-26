@@ -27,5 +27,11 @@
     <%= form.text_area :body %>
   </div>
 
+  <div>
+    <%= form.label :published_at %>
+    <%= form.date_field :published_at, 
+                          value: Time.now.strftime("%Y-%m-%dT%H:%M") %>
+  </div>
+
   <%= form.submit %>
 <% end %>
