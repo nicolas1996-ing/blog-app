@@ -5,25 +5,25 @@
     <% if blog.draft?%>
       <div class="p-2 rounded bg-gray-200 text-gray-900 my-3">
         <li class="list-none"> 
-          <%= link_to blog.title, blog_post_path(blog.id) %>: <%= blog.body %>
+          <%= link_to "Draft -> #{blog.title}", blog_post_path(blog.id) %>: 
+          <%= blog.body %> 
+          <%= blog&.published_at.try(:strftime, '20%y-%m-%d') %>
         </li>
       </div>
     <% elsif blog.scheduled? %>
       <div class="p-2 rounded bg-blue-100 text-blue-900 my-3">
         <li class="list-none"> 
-          <%= link_to blog.title, blog_post_path(blog.id) %>: <%= blog.body %>
+          <%= link_to "Scheduled -> #{blog.title}", blog_post_path(blog.id) %>: 
+          <%= blog.body %> 
+          <%= blog&.published_at.try(:strftime, '20%y-%m-%d') %>
         </li>
       </div>
     <% elsif blog.published? %>
       <div class="p-2 rounded bg-green-100 text-green-900 my-3">
         <li class="list-none"> 
-          <%= link_to blog.title, blog_post_path(blog.id) %>: <%= blog.body %>
-        </li>
-      </div>
-    <% else %>
-      <div class="p-2 rounded bg-red-100 text-red-900 my-3">
-        <li class="list-none"> 
-          <%= link_to blog.title, blog_post_path(blog.id) %>: <%= blog.body %>
+          <%= link_to"Published -> #{blog.title}", blog_post_path(blog.id) %>: 
+          <%= blog.body %>  
+          <%= blog&.published_at.try(:strftime, '20%y-%m-%d') %>
         </li>
       </div>
     <% end %>
