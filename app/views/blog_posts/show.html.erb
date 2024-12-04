@@ -1,5 +1,5 @@
 <h4><%= link_to "regresar", root_path %></h4>
-<%= @blog_post.title %>: <%= @blog_post.body %>
+<%= @blog_post.title %>: <%= @blog_post.content %>
 <%= @blog_post&.published_at&.try(:strftime, '20%y-%m-%d') %>
 <span> <%= link_to "editar", edit_blog_post_path(@blog_post.id) %> </span>
 <span> <%= button_to "eliminar", @blog_post, method: :delete, data: {turbo_confirm: "está seguro"} %> </span>

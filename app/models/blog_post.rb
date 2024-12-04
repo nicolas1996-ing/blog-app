@@ -1,6 +1,23 @@
+# == Schema Information
+#
+# Table name: blog_posts
+#
+#  id           :bigint           not null, primary key
+#  published_at :datetime
+#  title        :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
 class BlogPost < ApplicationRecord
+  # Action Text facilita la gestión de contenido enriquecido
+  # en las aplicaciones Rails, proporcionando un editor de texto enriquecido 
+  # y soporte para archivos adjuntos e incrustaciones multimedia. Con la configuración adecuada en el modelo, 
+  # el formulario y el controlador, puedes aprovechar esta poderosa característica en tu aplicación.
+  # configuración active record storage = config/storage.yml
+  has_rich_text :content # action_text BlogPost.last.content.body.to_s
+
   validates :title, presence: true
-  validates :body, presence: true
+  validates :content, presence: true
 
   # Los registros de BlogPost ordenados primero por la fecha de publicación (con los valores null al final) 
   # y luego por la fecha de actualización, ambos en orden descendente. Esto asegura que, entre los registros con la misma fecha de publicación, 
